@@ -1,4 +1,0 @@
-META-INF/spring-configuration-metadata.json
-io/github/upendramanike/orchestrator/autoconfigure/OrchestratorProperties.class
-io/github/upendramanike/orchestrator/autoconfigure/AgentOrchestratorAutoConfiguration.class
-io/github/upendramanike/orchestrator/autoconfigure/OrchestratorProperties$WorkflowConfig.class

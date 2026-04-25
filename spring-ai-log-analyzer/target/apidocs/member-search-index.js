@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"io.github.upendramanike.springai","c":"SpringAiLogPromptBuilder","l":"build(String)","u":"build(java.lang.String)"}];updateSearchResults();
