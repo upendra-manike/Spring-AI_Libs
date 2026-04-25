@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"io.github.upendramanike.openai","c":"OpenAiLogPromptBuilder","l":"build(String)","u":"build(java.lang.String)"}];updateSearchResults();

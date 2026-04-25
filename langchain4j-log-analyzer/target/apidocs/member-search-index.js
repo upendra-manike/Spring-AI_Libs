@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"io.github.upendramanike.langchain4j","c":"LogAnalysisPromptBuilder","l":"build(String)","u":"build(java.lang.String)"}];updateSearchResults();

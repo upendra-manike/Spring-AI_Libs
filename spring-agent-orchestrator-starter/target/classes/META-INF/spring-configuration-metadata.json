@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "orchestrator",
+      "type": "io.github.upendramanike.orchestrator.autoconfigure.OrchestratorProperties",
+      "sourceType": "io.github.upendramanike.orchestrator.autoconfigure.OrchestratorProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "orchestrator.workflows",
+      "type": "java.util.List<io.github.upendramanike.orchestrator.autoconfigure.OrchestratorProperties$WorkflowConfig>",
+      "sourceType": "io.github.upendramanike.orchestrator.autoconfigure.OrchestratorProperties"
+    }
+  ],
+  "hints": []
+}

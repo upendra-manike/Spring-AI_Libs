@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"io.github.upendramanike.djl","c":"DjlLogWindow","l":"mergeRecentLines(List<String>, int)","u":"mergeRecentLines(java.util.List,int)"}];updateSearchResults();

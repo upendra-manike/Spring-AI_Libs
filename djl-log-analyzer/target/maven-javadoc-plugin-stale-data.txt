@@ -1,0 +1,53 @@
+@options
+@packages
+-classpath
+'/Users/upendrakumarmanike/.m2/repository/ai/djl/api/0.31.0/api-0.31.0.jar:/Users/upendrakumarmanike/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar:/Users/upendrakumarmanike/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar:/Users/upendrakumarmanike/.m2/repository/net/java/dev/jna/jna/5.14.0/jna-5.14.0.jar:/Users/upendrakumarmanike/.m2/repository/org/apache/commons/commons-compress/1.27.1/commons-compress-1.27.1.jar:/Users/upendrakumarmanike/.m2/repository/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1.jar:/Users/upendrakumarmanike/.m2/repository/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar:/Users/upendrakumarmanike/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/src/main/java:/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'djl-log-analyzer 0.1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'djl-log-analyzer 0.1.0-SNAPSHOT API'
+io.github.upendramanike.djl
+/Users/upendrakumarmanike/.m2/repository/ai/djl/api/0.31.0/api-0.31.0.jar = 1731959731000
+/Users/upendrakumarmanike/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar = 1716144881000
+/Users/upendrakumarmanike/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar = 1714146969000
+/Users/upendrakumarmanike/.m2/repository/net/java/dev/jna/jna/5.14.0/jna-5.14.0.jar = 1702216922000
+/Users/upendrakumarmanike/.m2/repository/org/apache/commons/commons-compress/1.27.1/commons-compress-1.27.1.jar = 1723854899000
+/Users/upendrakumarmanike/.m2/repository/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1.jar = 1720801259000
+/Users/upendrakumarmanike/.m2/repository/commons-io/commons-io/2.16.1/commons-io-2.16.1.jar = 1712280333000
+/Users/upendrakumarmanike/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar = 1723281306000
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/src/main/java = 1776786828341
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/generated-sources/annotations = 1776787202878
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/tag-search-index.js = 1776787203231
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/overview-tree.html = 1776787203228
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/module-search-index.js = 1776787203231
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/index.html = 1776787203233
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/package-search-index.js = 1776787203231
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/jquery-ui.overrides.css = 1776787203238
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/index-all.html = 1776787203233
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/allpackages-index.html = 1776787203231
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/member-search-index.js = 1776787203231
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/script.js = 1776787203236
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/stylesheet.css = 1776787203236
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/help-doc.html = 1776787203235
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/element-list = 1776787203220
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/allclasses-index.html = 1776787203230
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/type-search-index.js = 1776787203231
+/Users/upendrakumarmanike/Documents/GitHub/Spring-AI_Libs/djl-log-analyzer/target/apidocs/search.js = 1776787203236
