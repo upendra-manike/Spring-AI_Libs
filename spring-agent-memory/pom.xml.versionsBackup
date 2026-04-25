@@ -7,12 +7,12 @@
     <parent>
         <groupId>io.github.upendra-manike</groupId>
         <artifactId>spring-ai-libs-parent</artifactId>
-        <version>0.1.1</version>
+        <version>0.1.0</version>
     </parent>
 
-    <artifactId>spring-agent-binding</artifactId>
-    <name>spring-agent-binding</name>
-    <description>Part of the Spring Agent Ecosystem</description>
+    <artifactId>spring-agent-memory</artifactId>
+    <name>Spring Agent Memory</name>
+    <description>Advanced AI session state engine with hybrid storage and context optimization.</description>
 
     <dependencies>
         <dependency>
@@ -24,5 +24,14 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
     </dependencies>
+
 </project>

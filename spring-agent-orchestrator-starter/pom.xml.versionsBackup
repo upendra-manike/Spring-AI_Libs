@@ -7,17 +7,26 @@
     <parent>
         <groupId>io.github.upendra-manike</groupId>
         <artifactId>spring-ai-libs-parent</artifactId>
-        <version>0.1.1</version>
+        <version>0.1.0</version>
     </parent>
 
-    <artifactId>spring-agent-binding</artifactId>
-    <name>spring-agent-binding</name>
-    <description>Part of the Spring Agent Ecosystem</description>
+    <artifactId>spring-agent-orchestrator-starter</artifactId>
+    <name>Spring Agent Orchestrator Starter</name>
+    <description>Spring Boot Starter for Agent Orchestration Engine.</description>
 
     <dependencies>
         <dependency>
+            <groupId>io.github.upendra-manike</groupId>
+            <artifactId>spring-agent-orchestrator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -25,4 +34,5 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
 </project>

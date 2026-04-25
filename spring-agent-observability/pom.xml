@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.github.upendra-manike</groupId>
         <artifactId>spring-ai-libs-parent</artifactId>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
     </parent>
 
     <artifactId>spring-agent-observability</artifactId>

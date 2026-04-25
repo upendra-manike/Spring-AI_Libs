@@ -6,18 +6,18 @@
     <parent>
         <groupId>io.github.upendra-manike</groupId>
         <artifactId>spring-ai-libs-parent</artifactId>
-        <version>0.1.1</version>
+        <version>0.1.0</version>
     </parent>
 
-    <artifactId>spring-ai-log-analyzer</artifactId>
-    <name>spring-ai-log-analyzer</name>
-    <description>Spring AI-based backend log analysis starter library.</description>
+    <artifactId>langchain4j-log-analyzer</artifactId>
+    <name>langchain4j-log-analyzer</name>
+    <description>LangChain4j-based backend log analysis starter library.</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-model-openai</artifactId>
-            <version>${spring-ai.version}</version>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j</artifactId>
+            <version>${langchain4j.version}</version>
         </dependency>
     </dependencies>
 </project>
