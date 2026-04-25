@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Agent Ecosystem | Enterprise AI Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #050505 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Ecosystem Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--glow);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Code Block */
+        .code-header {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        pre[class*="language-"] {
+            font-size: 0.85rem !important;
+            border-radius: 1rem !important;
+            background: rgba(0,0,0,0.4) !important;
+            margin: 0 !important;
+        }
+
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, transparent, #0f172a);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: var(--accent-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="badge">Version 0.1.1 Released</div>
+        <h1 class="animate">Spring Agent Ecosystem</h1>
+        <p class="animate" style="animation-delay: 0.2s;">A production-grade, reactive platform for autonomous agents. Designed for reliability, safety, and observability.</p>
+        <div class="animate" style="animation-delay: 0.4s;">
+            <a href="https://github.com/upendrakumarmanike/Spring-AI_Libs" class="btn">View on GitHub</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>The Libraries</h2>
+            <p>Everything you need for enterprise AI orchestration.</p>
+        </div>
+
+        <div class="grid">
+            <!-- Orchestrator -->
+            <div class="card animate" style="animation-delay: 0.1s;">
+                <h3><div class="card-icon">⚡</div> Orchestrator</h3>
+                <p>Execute complex agent workflows as Reactive Directed Acyclic Graphs (DAGs).</p>
+                <div class="code-header">Example: DAG Execution</div>
+                <pre><code class="language-java">dagExecutor.execute(dag, context)
+    .map(results -> {
+        log.info("Workflow ID: " + results.getExecutionId());
+        return results;
+    }).subscribe();</code></pre>
+            </div>
+
+            <!-- Guardrails -->
+            <div class="card animate" style="animation-delay: 0.2s;">
+                <h3><div class="card-icon">🛡️</div> Guardrails</h3>
+                <p>Enterprise safety layer for PII masking and sensitive data detection.</p>
+                <div class="code-header">Example: PII Redaction</div>
+                <pre><code class="language-java">PiiMasker masker = new PiiMasker();
+String safeInput = masker.mask(rawInput);
+// "Call user@email.com" -> "Call [REDACTED]"</code></pre>
+            </div>
+
+            <!-- Binding -->
+            <div class="card animate" style="animation-delay: 0.3s;">
+                <h3><div class="card-icon">🧩</div> Binding</h3>
+                <p>Auto-repair malformed LLM outputs and enforce strict JSON schemas.</p>
+                <div class="code-header">Example: JSON Repair</div>
+                <pre><code class="language-java">JsonRepairer repairer = new JsonRepairer();
+String cleanJson = repairer.repair(brokenLlmOutput);
+// Fixes unescaped chars & markdown chatter</code></pre>
+            </div>
+
+            <!-- Observability -->
+            <div class="card animate" style="animation-delay: 0.4s;">
+                <h3><div class="card-icon">📸</div> Observability</h3>
+                <p>Distributed tracing for prompt patterns, token costs, and failures.</p>
+                <div class="code-header">Example: Trace Recording</div>
+                <pre><code class="language-java">TraceSpan span = TraceSpan.builder()
+    .traceId(uuid)
+    .agent("ReportGen")
+    .latency(250)
+    .build();</code></pre>
+            </div>
+
+            <!-- Memory -->
+            <div class="card animate" style="animation-delay: 0.5s;">
+                <h3><div class="card-icon">💾</div> Memory</h3>
+                <p>AI Session State Engine with hybrid HOT (Redis) and COLD (Vector) tiers.</p>
+                <div class="code-header">Example: Memory Tiers</div>
+                <pre><code class="language-java">MemorySegment segment = MemorySegment.builder()
+    .content("User preferred dark mode")
+    .tier(MemoryTier.HOT)
+    .build();</code></pre>
+            </div>
+
+            <!-- Router -->
+            <div class="card animate" style="animation-delay: 0.6s;">
+                <h3><div class="card-icon">🚦</div> Router</h3>
+                <p>Smart model gateway with cost-aware routing and latency fallbacks.</p>
+                <div class="code-header">Example: Smart Routing</div>
+                <pre><code class="language-java">router.route(request, Strategy.COST_OPTIMIZED);
+// Automatically picks Claude 3 Haiku for simple tasks</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <section class="cta">
+        <h2>Ready to build reactive agents?</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Install the starter and get running in minutes.</p>
+        <pre style="max-width: 500px; margin: 0 auto 2rem; background: #000 !important;"><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.github.upendra-manike&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-agent-orchestrator-starter&lt;/artifactId&gt;
+    &lt;version&gt;0.1.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+        <a href="https://github.com/upendrakumarmanike/Spring-AI_Libs" class="btn">Explore Docs</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Spring Agent Ecosystem. Built by Upendra Manike.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml.min.js"></script>
+</body>
+</html>
