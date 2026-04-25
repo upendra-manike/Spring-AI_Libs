@@ -10,9 +10,9 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>spring-agent-orchestrator</artifactId>
-    <name>Spring Agent Orchestrator</name>
-    <description>Core engine for Spring-native agent orchestration.</description>
+    <artifactId>spring-agent-memory</artifactId>
+    <name>Spring Agent Memory</name>
+    <description>Advanced AI session state engine with hybrid storage and context optimization.</description>
 
     <dependencies>
         <dependency>
@@ -31,17 +31,6 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-test</artifactId>
-            <version>${reactor.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

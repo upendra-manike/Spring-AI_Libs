@@ -1,85 +1,104 @@
 package io.github.upendramanike.orchestrator.example;
 
+import io.github.upendramanike.binding.core.JsonRepairer;
+import io.github.upendramanike.guardrails.core.PiiMasker;
+import io.github.upendramanike.observability.model.TraceSpan;
+import io.github.upendramanike.orchestrator.annotation.Agent;
 import io.github.upendramanike.orchestrator.core.Dag;
-import io.github.upendramanike.orchestrator.core.DagExecutor;
 import io.github.upendramanike.orchestrator.core.Node;
+import io.github.upendramanike.orchestrator.core.DagExecutor;
 import io.github.upendramanike.orchestrator.model.ExecutionContext;
 import io.github.upendramanike.orchestrator.model.NodeResult;
-import io.github.upendramanike.orchestrator.model.NodeState;
-import lombok.extern.slf4j.Slf4j;
+import io.github.upendramanike.router.core.ModelRouter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import reactor.core.publisher.Mono;
 
-import java.util.*;
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
 
 @SpringBootApplication
-@Slf4j
 public class ExampleApplication {
+    private static final Logger log = LoggerFactory.getLogger(ExampleApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(ExampleApplication.class, args);
     }
 
     @Bean
-    public CommandLineRunner run(DagExecutor executor) {
+    public CommandLineRunner run(DagExecutor dagExecutor) {
         return args -> {
-            log.info("Starting Example Agent Orchestration...");
+            log.info("--- Starting Full Ecosystem AI Workflow ---");
 
-            // Define dummy nodes
-            Node planner = new MockNode("planner", "Planning the report...");
-            Node fetcher = new MockNode("fetcher", "Fetching data from API...");
-            Node summarizer = new MockNode("summarizer", "Summarizing data...");
-            Node reviewer = new MockNode("reviewer", "Reviewing final report...");
+            // 1. Setup ecosystem components
+            PiiMasker piiMasker = new PiiMasker();
+            JsonRepairer jsonRepairer = new JsonRepairer();
+            
+            String rawInput = "Analyze report for user upendra.manike@gmail.com. Output JSON: { 'status': 'ok' "; // Malformed JSON
+            
+            // 2. Apply Guardrails
+            String safeInput = piiMasker.mask(rawInput);
+            log.info("Safe Input (Masked): {}", safeInput);
 
-            // Define dependencies
-            Map<String, Set<String>> dependencies = new HashMap<>();
-            dependencies.put("fetcher", Set.of("planner"));
-            dependencies.put("summarizer", Set.of("fetcher"));
-            dependencies.put("reviewer", Set.of("summarizer"));
-
-            Dag dag = Dag.builder()
-                    .id("report-gen")
-                    .nodes(List.of(planner, fetcher, summarizer, reviewer))
-                    .dependencies(dependencies)
-                    .build();
-
+            // 3. Execution with Observability
+            String traceId = UUID.randomUUID().toString();
             ExecutionContext context = ExecutionContext.builder()
                     .executionId(UUID.randomUUID().toString())
                     .build();
+            context.setParam("input", safeInput);
 
-            executor.execute(dag, context)
-                    .subscribe(results -> {
-                        log.info("Workflow complete. Results:");
-                        results.forEach((id, result) -> 
-                            log.info("Node {}: {} ({}ms)", id, result.getState(), result.getExecutionTimeMs())
-                        );
-                    });
+            // Build a simple DAG
+            Node node1 = new Node() {
+                @Override
+                public String getId() { return "node1"; }
+                @Override
+                public NodeResult execute(ExecutionContext ctx) {
+                    String input = (String) ctx.getParam("input");
+                    return NodeResult.builder()
+                            .nodeId("node1")
+                            .state(io.github.upendramanike.orchestrator.model.NodeState.SUCCESS)
+                            .output("{ \"processed\": true, \"raw\": \"" + input + "\" }")
+                            .build();
+                }
+            };
+            
+            Dag dag = Dag.builder()
+                    .id("example-dag")
+                    .nodes(new java.util.ArrayList<>(List.of(node1)))
+                    .dependencies(new java.util.HashMap<>())
+                    .build();
+
+            dagExecutor.execute(dag, context)
+                    .map(resultsMap -> {
+                        // 4. Apply Output Binding & Repair
+                        NodeResult lastResult = resultsMap.get("node1");
+                        String repairedJson = jsonRepairer.repair((String) lastResult.getOutput());
+                        
+                        // 5. Create Trace Span
+                        TraceSpan span = TraceSpan.builder()
+                                .traceId(traceId)
+                                .agentName("ExampleAgent")
+                                .prompt(safeInput)
+                                .response(repairedJson)
+                                .latencyMs(250.0)
+                                .timestamp(Instant.now())
+                                .build();
+                                
+                        log.info("Workflow complete. Trace recorded: {}", span.getTraceId());
+                        log.info("Repaired Output: {}", repairedJson);
+                        return repairedJson;
+                    })
+                    .subscribe();
         };
     }
 
-    static class MockNode implements Node {
-        private final String id;
-        private final String message;
-
-        MockNode(String id, String message) {
-            this.id = id;
-            this.message = message;
-        }
-
-        @Override
-        public String getId() { return id; }
-
-        @Override
-        public NodeResult execute(ExecutionContext context) {
-            log.info("Node {}: {}", id, message);
-            try { Thread.sleep(500); } catch (InterruptedException e) {}
-            return NodeResult.builder()
-                    .nodeId(id)
-                    .state(NodeState.SUCCESS)
-                    .output("Result of " + id)
-                    .build();
-        }
+    @Agent("ExampleAgent")
+    public static class MockAgent {
+        // Keeping this for future starter-based auto-discovery
     }
 }

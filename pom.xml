@@ -5,7 +5,7 @@
 
     <groupId>io.github.upendra-manike</groupId>
     <artifactId>spring-ai-libs-parent</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>pom</packaging>
 
     <name>Spring AI Libs Parent</name>
@@ -20,6 +20,12 @@
         <module>spring-agent-orchestrator</module>
         <module>spring-agent-orchestrator-starter</module>
         <module>spring-agent-orchestrator-example</module>
+        <module>spring-agent-memory</module>
+        <module>spring-agent-observability</module>
+        <module>spring-agent-guardrails</module>
+        <module>spring-agent-router</module>
+        <module>spring-agent-binding</module>
+        <module>spring-agent-test</module>
     </modules>
 
     <properties>
@@ -146,26 +152,53 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.4</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>gpg</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <distributionManagement>
         <repository>
             <id>central</id>
-            <url>https://central.sonatype.com/api/v1/publisher</url>
+            <name>Central Portal</name>
+            <url>https://central.sonatype.com/</url>
         </repository>
     </distributionManagement>
 </project>

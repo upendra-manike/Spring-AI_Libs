@@ -10,23 +10,14 @@
         <version>0.1.0</version>
     </parent>
 
-    <artifactId>spring-agent-orchestrator-starter</artifactId>
-    <name>Spring Agent Orchestrator Starter</name>
-    <description>Spring Boot Starter for Agent Orchestration Engine.</description>
+    <artifactId>spring-agent-observability</artifactId>
+    <name>spring-agent-observability</name>
+    <description>Part of the Spring Agent Ecosystem</description>
 
     <dependencies>
         <dependency>
-            <groupId>io.github.upendra-manike</groupId>
-            <artifactId>spring-agent-orchestrator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -34,5 +25,4 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-
 </project>

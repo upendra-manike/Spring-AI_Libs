@@ -7,7 +7,7 @@
     <parent>
         <groupId>io.github.upendra-manike</groupId>
         <artifactId>spring-ai-libs-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
     </parent>
 
     <artifactId>spring-agent-orchestrator-example</artifactId>
@@ -27,6 +27,26 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.github.upendra-manike</groupId>
+            <artifactId>spring-agent-binding</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.upendra-manike</groupId>
+            <artifactId>spring-agent-observability</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.upendra-manike</groupId>
+            <artifactId>spring-agent-guardrails</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.upendra-manike</groupId>
+            <artifactId>spring-agent-router</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

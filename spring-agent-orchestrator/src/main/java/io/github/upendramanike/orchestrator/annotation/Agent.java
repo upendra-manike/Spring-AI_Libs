@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Documented
 @Component
 public @interface Agent {
+    String value() default "";
     String role() default "";
     String description() default "";
 }
