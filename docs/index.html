@@ -298,6 +298,69 @@ String cleanJson = repairer.repair(brokenLlmOutput);
 // Automatically picks Claude 3 Haiku for simple tasks</code></pre>
             </div>
         </div>
+
+        <!-- Full Example Section -->
+        <div class="section-title" style="margin-top: 8rem;">
+            <h2>Master Implementation</h2>
+            <p>See the entire ecosystem working in harmony.</p>
+        </div>
+
+        <div class="card" style="background: rgba(15, 23, 42, 0.6); margin-bottom: 4rem;">
+            <div class="code-header">
+                <span>ExampleApplication.java</span>
+                <span>The Complete Lifecycle</span>
+            </div>
+            <pre><code class="language-java">@SpringBootApplication
+public class AgentApp {
+
+    public void runWorkflow(DagExecutor dagExecutor) {
+        // 1. Guardrails: Mask PII from user input
+        PiiMasker masker = new PiiMasker();
+        String safeInput = masker.mask("Analyze user: upendra.manike@gmail.com");
+
+        // 2. Orchestration: Execute with trace tracking
+        String traceId = UUID.randomUUID().toString();
+        ExecutionContext context = ExecutionContext.builder()
+                .executionId(traceId)
+                .build();
+        context.setParam("input", safeInput);
+
+        dagExecutor.execute(myDag, context)
+                .map(results -> {
+                    // 3. Binding: Repair LLM JSON output
+                    JsonRepairer repairer = new JsonRepairer();
+                    String cleanJson = repairer.repair((String) results.get("node1").getOutput());
+                    
+                    // 4. Observability: Record trace span
+                    TraceSpan span = TraceSpan.builder()
+                            .traceId(traceId)
+                            .response(cleanJson)
+                            .timestamp(Instant.now())
+                            .build();
+
+                    return cleanJson;
+                }).subscribe();
+    }
+}</code></pre>
+        </div>
+
+        <div class="grid">
+            <div class="card" style="border-style: dashed;">
+                <h3>📥 Input (Raw)</h3>
+                <p style="font-family: monospace; color: var(--accent-primary);">"Process data for upendra.manike@gmail.com and return status."</p>
+            </div>
+            <div class="card" style="border-style: dashed;">
+                <h3>🛡️ Protected Input</h3>
+                <p style="font-family: monospace; color: var(--accent-secondary);">"Process data for [EMAIL_REDACTED] and return status."</p>
+            </div>
+            <div class="card" style="border-style: dashed;">
+                <h3>📤 Repaired Output</h3>
+                <pre><code class="language-json">{
+  "status": "success",
+  "data_cleaned": true
+}</code></pre>
+            </div>
+        </div>
     </div>
 
     <section class="cta">
@@ -318,5 +381,6 @@ String cleanJson = repairer.repair(brokenLlmOutput);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
 </body>
 </html>
